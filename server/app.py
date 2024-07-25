@@ -11,7 +11,7 @@ from server.config import app, db, api
 from server.authenticate import authenticate_bp, init_jwt
 from server.recipe import recipe_bp
 # Add your model imports
-from models import User, Recipe, Rating, RecipeTag, Review, Tag
+from server.models import User, Recipe, Rating, RecipeTag, Review, Tag
 
 # app = Flask(__name__)
 # app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
