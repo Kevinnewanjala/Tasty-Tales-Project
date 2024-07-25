@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from '../navbar';
 import Footer from '../footer'
+const API_URL=process.env.REACT_APP_API
 
 const EditRecipes = ({ authState }) => {
     const { id } = useParams();
@@ -17,7 +18,7 @@ const EditRecipes = ({ authState }) => {
         const fetchRecipe = async () => {
             console.log(id)
         try {
-            const response = await axios.get(`/api/recipes/${id}`);
+            const response = await axios.get(`${API_URL}/api/recipes/${id}`);
             setRecipe(response.data);
         } catch (err) {
             setError(err);
@@ -36,7 +37,7 @@ const EditRecipes = ({ authState }) => {
         e.preventDefault();
         const token = localStorage.getItem('token');
         try {
-            await axios.put(`/api/recipes/${id}`, recipe, {
+            await axios.put(`${API_URL}/api/recipes/${id}`, recipe, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

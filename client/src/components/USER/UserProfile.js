@@ -8,6 +8,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import '../form.css'; // Import common styles
 import { Modal, Button } from 'react-bootstrap'; // Import Modal and Button from react-bootstrap
 
+const API_URL=process.env.REACT_APP_API
+
 const UserProfile = () => {
   const { logout, user, loading } = useAuth();
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const UserProfile = () => {
     const fetchUserInfo = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('/user/userinfo', {
+        const response = await axios.get(`${API_URL}/user/userinfo`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -56,7 +58,7 @@ const UserProfile = () => {
   const handleDeleteUser = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.delete('/user/delete_user', {
+      const response = await axios.delete(`${API_URL}/user/delete_user`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -82,7 +84,7 @@ const UserProfile = () => {
     }
 
     try {
-      const response = await axios.put('/user/update_user', formData, {
+      const response = await axios.put(`${API_URL}/user/update_user`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

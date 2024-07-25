@@ -6,6 +6,8 @@ import axios from 'axios';
 import NavBar from '../navbar';
 import Footer from '../footer'
 
+const API_URL=process.env.REACT_APP_API
+
 const RecipeDetail = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
@@ -17,7 +19,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(`/api/recipes/${id}`);
+        const response = await axios.get(`${API_URL}/api/recipes/${id}`);
         setRecipe(response.data);
       } catch (err) {
         setError(err);
@@ -35,7 +37,7 @@ const RecipeDetail = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return <p> You need to login first</p>
-      const response = await axios.post(`/api/recipes/${id}/comments`,
+      const response = await axios.post(`${API_URL}/api/recipes/${id}/comments`,
          { content: commentContent }, 
          {
           headers: {
@@ -46,7 +48,7 @@ const RecipeDetail = () => {
       console.log('Comment added:', response.data);
       setCommentContent('');
       // Fetch updated recipe data to display new comment
-      const updatedRecipe = await axios.get(`/api/recipes/${id}`);
+      const updatedRecipe = await axios.get(`${API_URL}/api/recipes/${id}`);
       console.log(updatedRecipe)
       setRecipe(updatedRecipe.data);
     } catch (err) {
@@ -58,7 +60,7 @@ const RecipeDetail = () => {
     
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post(`/api/recipes/${id}/ratings`, { score: starRating }, {
+      const response = await axios.post(`${API_URL}/api/recipes/${id}/ratings`, { score: starRating }, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
@@ -66,7 +68,7 @@ const RecipeDetail = () => {
       });
       console.log('Rating added', response.data)
       // Fetch updated recipe data to display new rating
-      const updatedRecipe = await axios.get(`/api/recipes/${id}`);
+      const updatedRecipe = await axios.get(`${API_URL}/api/recipes/${id}`);
       console.log(updatedRecipe);
       setRecipe(updatedRecipe.data);
     } catch (err) {

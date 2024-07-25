@@ -4,12 +4,14 @@ import RecipeCard from './recipeCard';
 import NavBar from '../navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const API_URL=process.env.REACT_APP_API
+
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        fetch('/api/recipes')  // Adjust the URL if your endpoint is different
+        fetch('${API_URL}/api/recipes')  // Adjust the URL if your endpoint is different
             .then(response => response.json())
             .then(data => {
                 setRecipes(data);

@@ -5,6 +5,10 @@ import NavBar from "../navbar";
 import RecipeCard from "./recipeCard";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
+const API_URL=process.env.REACT_APP_API
+
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -18,7 +22,7 @@ const SearchResults = () => {
         const fetchRecipes = async () => {
             console.log(query)
             try {
-                const response = await axios.get(`/api/search?q=${query}`);
+                const response = await axios.get(`${API_URL}/api/search?q=${query}`);
                 setRecipes(response.data);
                 setLoading(false);
             } catch (error) {

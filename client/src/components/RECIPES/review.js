@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_URL=process.env.REACT_APP_API
+
 const Review = () => {
   const [rating, setRating] = useState(0); // State to hold the rating
   const [comment, setComment] = useState(''); // State to hold the comment
@@ -19,7 +21,7 @@ const Review = () => {
     const reviewData = { rating, comment };
 
     try {
-      const response = await fetch('/api/reviews', {
+      const response = await fetch('${API_URL}/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

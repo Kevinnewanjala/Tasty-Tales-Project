@@ -6,6 +6,8 @@ import NavBar from '../navbar';
 import Footer from '../footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const API_URL=process.env.REACT_APP_API
+
 const MyRecipes = ({ authState }) => {
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -15,7 +17,7 @@ const MyRecipes = ({ authState }) => {
             const token = localStorage.getItem('token');
             console.log(token)
             try {
-                const response = await axios.get('/api/user_recipes', {
+                const response = await axios.get('${API_URL}/api/user_recipes', {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }

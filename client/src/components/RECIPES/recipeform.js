@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from '../navbar';
 import Footer from '../footer';
 
+const API_URL=process.env.REACT_APP_API
+
 const RecipeForm = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const RecipeForm = () => {
       }
 
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/recipes', {
+      const response = await fetch('${API_URL}/api/recipes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
