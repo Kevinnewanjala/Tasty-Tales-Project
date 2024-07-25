@@ -37,7 +37,7 @@ const RecipeForm = () => {
       }
 
       const token = localStorage.getItem('token');
-      const response = await fetch('${API_URL}/api/recipes', {
+      const response = await fetch(`${API_URL}/api/recipes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

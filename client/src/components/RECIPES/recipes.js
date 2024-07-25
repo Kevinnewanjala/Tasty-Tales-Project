@@ -11,7 +11,7 @@ const Recipes = () => {
     const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
-        fetch('${API_URL}/api/recipes')  // Adjust the URL if your endpoint is different
+        fetch(`${API_URL}/api/recipes`)  // Adjust the URL if your endpoint is different
             .then(response => response.json())
             .then(data => {
                 setRecipes(data);

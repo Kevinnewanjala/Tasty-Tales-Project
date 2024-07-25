@@ -50,7 +50,7 @@ const EditRecipes = ({ authState }) => {
     const handleDelete = async (e) => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`/api/recipes/${id}`, {
+            await axios.delete(`${API_URL}/api/recipes/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
