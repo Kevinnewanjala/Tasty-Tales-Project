@@ -5,8 +5,8 @@ from sqlalchemy import or_
 import requests
 
 # Local imports
-from config import db, api
-from models import Recipe, User, Tag, Review, Rating, RecipeTag
+from server.config import db, api
+from server.models import Recipe, User, Tag, Review, Rating, RecipeTag
 
 recipe_bp = Blueprint('recipe_bp', __name__)
 

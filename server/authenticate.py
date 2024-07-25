@@ -3,9 +3,9 @@ from flask_restful import Resource, Api
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
 # Local imports
-from config import db, app
+from server.config import db, app
 # Add your model imports
-from models import User
+from server.models import User
 
 authenticate_bp = Blueprint('authenticate_bp',__name__)
 #authenticate_api = Api(authenticate_bp)
