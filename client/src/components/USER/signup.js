@@ -5,12 +5,10 @@ import '../form.css'; // Adjusted import path for CSS styling
 import NavBar from '../navbar';
 import Footer from '../footer';
 
-const API_URL=process.env.REACT_APP_API
-
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = `${API_URL}/user/signup`;
+const SIGNUP_URL = '/user/signup';
 
 const SignUp = () => {
     const userRef = useRef();
